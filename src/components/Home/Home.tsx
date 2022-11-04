@@ -41,7 +41,7 @@ export default function Home() {
         </CardBack>
       </BackGround>
       {confirm ? (
-        <Confirm />
+        <Confirm setConfirm={setConfirm}/>
       ) : (
         <Form
           onSubmit={onSubmit}

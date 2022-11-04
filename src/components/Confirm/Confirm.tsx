@@ -1,6 +1,6 @@
 import { ContainerConfirm, Title, Description, Image, Button } from './style'
 
-export default function Confirm() {
+export default function Confirm(props) {
   return (
     <ContainerConfirm>
       <Image
@@ -9,7 +9,9 @@ export default function Confirm() {
       />
       <Title>THANK YOU!</Title>
       <Description>{`We've added your card details`}</Description>
-      <Button type="submit">Continue</Button>
+      <Button type="submit" onClick={() => props.setConfirm(false)}>
+        Continue
+      </Button>
     </ContainerConfirm>
   )
 }
