@@ -5,6 +5,13 @@ export const InputContainer = styled.form`
   position: relative;
   margin-left: 600px;
   margin-top: 300px;
+
+  @media screen and (max-width: 1400px) {
+    width: 300px;
+    position: relative;
+    margin-left: 400px;
+    margin-top: 200px;
+  }
 `
 export const InputName = styled.input`
   border: 1px solid #d9d9d9;

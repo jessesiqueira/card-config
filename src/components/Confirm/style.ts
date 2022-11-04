@@ -9,6 +9,13 @@ export const ContainerConfirm = styled.div`
   margin-left: 600px;
   margin-top: 250px;
   align-items: center;
+
+  @media screen and (max-width: 1400px) {
+    color: aliceblue;
+    position: relative;
+    margin-top: 120px;
+    margin-left: 390px;
+  }
 `
 export const Title = styled.h1`
   color: #23092f;

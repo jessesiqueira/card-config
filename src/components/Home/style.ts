@@ -22,6 +22,17 @@ export const CardFront = styled.div`
   background-image: url('../../public/interactive-card-details-form-main/images/bg-card-front.png');
   background-repeat: no-repeat;
   background-size: cover;
+
+  @media screen and (max-width: 1400px) {
+    width: 447px;
+    height: 245px;
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 100px;
+    background-image: url('../../public/interactive-card-details-form-main/images/bg-card-front.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 `
 export const CardBack = styled.div`
   width: 447px;
@@ -32,6 +43,16 @@ export const CardBack = styled.div`
   background-image: url('../../public/interactive-card-details-form-main/images/bg-card-back.png');
   background-repeat: no-repeat;
   background-size: cover;
+  @media screen and (max-width: 1400px) {
+    width: 447px;
+    height: 245px;
+    position: relative;
+    margin-left: 230px;
+    margin-top: 370px;
+    background-image: url('../../public/interactive-card-details-form-main/images/bg-card-back.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 `
 export const InfoCardFront = styled.p`
   position: relative;
@@ -57,4 +78,11 @@ export const UserCvc = styled.p`
   position: relative;
   margin-top: 110px;
   margin-left: 360px;
+  @media screen and (max-width: 1400px) {
+    color: aliceblue;
+    top: 110px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 360px;
+  }
 `
