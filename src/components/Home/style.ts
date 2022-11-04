@@ -1,4 +1,7 @@
 import styled from 'styled-components'
+import bgMain from '../../images/bg-main-desktop.png'
+import bgCardFront from '../../images/bg-card-front.png'
+import bgCardBack from '../../images/bg-card-back.png'
 
 export const HomeComponent = styled.div`
   height: 100vh;
@@ -6,7 +9,7 @@ export const HomeComponent = styled.div`
   display: flex;
 `
 export const BackGround = styled.div`
-  background-image: url('../../public/interactive-card-details-form-main/images/bg-main-desktop.png');
+  background-image: url(${bgMain});
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -19,7 +22,7 @@ export const CardFront = styled.div`
   position: absolute;
   margin-left: 150px;
   margin-top: 180px;
-  background-image: url('../../public/interactive-card-details-form-main/images/bg-card-front.png');
+  background-image: url(${bgCardFront});
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -29,7 +32,7 @@ export const CardFront = styled.div`
     position: absolute;
     margin-left: 150px;
     margin-top: 100px;
-    background-image: url('../../public/interactive-card-details-form-main/images/bg-card-front.png');
+    background-image: url(${bgCardFront});
     background-repeat: no-repeat;
     background-size: cover;
   }
@@ -40,7 +43,7 @@ export const CardBack = styled.div`
   position: absolute;
   margin-left: 230px;
   margin-top: 470px;
-  background-image: url('../../public/interactive-card-details-form-main/images/bg-card-back.png');
+  background-image: url(${bgCardBack});
   background-repeat: no-repeat;
   background-size: cover;
   @media screen and (max-width: 1400px) {
@@ -49,7 +52,7 @@ export const CardBack = styled.div`
     position: relative;
     margin-left: 230px;
     margin-top: 370px;
-    background-image: url('../../public/interactive-card-details-form-main/images/bg-card-back.png');
+    background-image: url(${bgCardBack});
     background-repeat: no-repeat;
     background-size: cover;
   }
