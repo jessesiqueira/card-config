@@ -14,7 +14,7 @@ import {
   InputDateY,
   Error
 } from './style'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ChangeEvent } from 'react'
@@ -33,7 +33,7 @@ interface IFormInputs {
   setUserDateY: any
   setCvc: any
   setCardNumber: any
-  onSubmit: (userData: SubmitHandler<IFormInputs>) => void
+  onSubmit: (userData: InputProps) => void
 }
 
 export function Form(props: IFormInputs) {

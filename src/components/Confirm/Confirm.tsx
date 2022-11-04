@@ -1,6 +1,6 @@
 import { ContainerConfirm, Title, Description, Image, Button } from './style'
 
-export default function Confirm(props) {
+export default function Confirm(props: any) {
   return (
     <ContainerConfirm>
       <Image
