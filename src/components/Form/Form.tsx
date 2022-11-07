@@ -6,18 +6,19 @@ import {
   LabelCvc,
   InputCvc,
   Button,
-  Span,
   ContainerInputData,
   Div,
   InputCardNumber,
   InputDateM,
   InputDateY,
-  Error
+  Error,
+  Span
 } from './style'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { ChangeEvent } from 'react'
+import { name } from '../../utils/validation'
 
 export interface InputProps {
   name: string
@@ -39,11 +40,17 @@ interface IFormInputs {
 export function Form(props: IFormInputs) {
   const schema = yup
     .object({
-      name: yup.string().required(),
-      cardNumber: yup.number().required().min(19),
-      numberDateM: yup.number().positive().integer().required(),
-      numberDateY: yup.number().positive().integer().required(),
-      cvc: yup.number().positive().integer().required()
+      name: yup
+        .string()
+        .required('Required field')
+        .matches(name, 'Only Letters'),
+      cardNumber: yup
+        .string()
+        .required('Required field')
+        .min(19, '19 Characters Required'),
+      numberDateM: yup.string().required('Required').min(2, '2 Min.'),
+      numberDateY: yup.string().required('Required').min(2, '2 Min.'),
+      cvc: yup.string().required('Required').min(3, '3 Min.')
     })
     .required()
 
@@ -55,6 +62,10 @@ export function Form(props: IFormInputs) {
   } = useForm<InputProps>({
     resolver: yupResolver(schema)
   })
+
+  function onError(error: any) {
+    console.log('error', error)
+  }
 
   const handleChanger = (e: ChangeEvent<HTMLInputElement>) => {
     if (e?.target.value !== '') {
@@ -69,7 +80,6 @@ export function Form(props: IFormInputs) {
       const newValue = cleanValue.match(/.{1,4}/g)?.join(' ')
       const finalValue = newValue ?? cleanValue
       setValue('cardNumber', finalValue)
-      console.log(newValue)
     }
   }
   const hadleChangerName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -93,7 +103,6 @@ export function Form(props: IFormInputs) {
       const newValue = cleanValue.match(/.{1,4}/g)?.join(' ')
       const finalValue = newValue ?? cleanValue
       setValue('numberDateM', finalValue)
-      console.log(newValue)
     }
   }
   const handlerChangerDateY = (e: ChangeEvent<HTMLInputElement>) => {
@@ -109,7 +118,6 @@ export function Form(props: IFormInputs) {
       const newValue = cleanValue.match(/.{1,4}/g)?.join(' ')
       const finalValue = newValue ?? cleanValue
       setValue('numberDateY', finalValue)
-      console.log(newValue)
     }
   }
   const handlerChangerCvc = (e: ChangeEvent<HTMLInputElement>) => {
@@ -125,12 +133,11 @@ export function Form(props: IFormInputs) {
       const newValue = cleanValue.match(/.{1,4}/g)?.join(' ')
       const finalValue = newValue ?? cleanValue
       setValue('cvc', finalValue)
-      console.log(newValue)
     }
   }
 
   return (
-    <InputContainer onSubmit={handleSubmit(props.onSubmit)}>
+    <InputContainer onSubmit={handleSubmit(props.onSubmit, onError)}>
       <Label htmlFor="InputName">CARDHOLDER NAME</Label>
       <br />
       <InputName
@@ -140,7 +147,7 @@ export function Form(props: IFormInputs) {
         placeholder="Yor Name..."
         maxLength={16}
       />
-      {errors.name != null && <Span>Campo obrigatório</Span>}
+      {errors.name != null && <Span>{errors.name.message}</Span>}
 
       <br />
       <Label htmlFor="InputCardNumber">CARD NUMBER</Label>
@@ -148,11 +155,12 @@ export function Form(props: IFormInputs) {
       <InputCardNumber
         maxLength={19}
         minLength={19}
+        type="tel"
         {...register('cardNumber', { required: true })}
         onChange={handleChanger}
         placeholder="Only Numbers..."
       />
-      {errors.cardNumber != null && <Span>Campo obrigatório</Span>}
+      {errors.cardNumber != null && <Span>{errors.cardNumber.message}</Span>}
 
       <br />
       <Label htmlFor="InputDateM">EX. DATE (MM/YY)</Label>
@@ -161,6 +169,7 @@ export function Form(props: IFormInputs) {
         <br />
         <InputDateM
           maxLength={2}
+          type="tel"
           {...register('numberDateM', { required: true })}
           onChange={handlerChangerDateM}
           placeholder="MM"
@@ -168,6 +177,7 @@ export function Form(props: IFormInputs) {
 
         <InputDateY
           maxLength={2}
+          type="tel"
           {...register('numberDateY', { required: true })}
           onChange={handlerChangerDateY}
           placeholder="YY"
@@ -175,15 +185,24 @@ export function Form(props: IFormInputs) {
 
         <InputCvc
           maxLength={3}
+          type="tel"
           {...register('cvc', { required: true })}
           placeholder="e.g. 123"
           onChange={handlerChangerCvc}
         />
       </ContainerInputData>
       <Div>
-        <Error>{errors.numberDateM != null && <Span>Obrigatório</Span>}</Error>
-        <Error>{errors.numberDateY != null && <Span>Obrigatório</Span>}</Error>
-        <Error>{errors.cvc != null && <Span>Obrigatório</Span>}</Error>
+        <Error>
+          {errors.numberDateM != null && (
+            <Span>{errors.numberDateM.message}</Span>
+          )}
+        </Error>
+        <Error>
+          {errors.numberDateY != null && (
+            <Span>{errors.numberDateY.message}</Span>
+          )}
+        </Error>
+        <Error>{errors.cvc != null && <Span>{errors.cvc.message}</Span>}</Error>
       </Div>
       <Button type="submit">Confirme</Button>
     </InputContainer>

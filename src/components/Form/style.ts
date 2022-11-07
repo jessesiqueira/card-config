@@ -47,12 +47,6 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: large;
 `
-export const Span = styled.span`
-  color: red;
-  font-size: 10px;
-  position: relative;
-  bottom: 5px;
-`
 
 export const Div = styled.div`
   display: flex;
@@ -87,4 +81,11 @@ export const InputDateY = styled.input`
 `
 export const Error = styled.div`
   width: 55px;
+`
+
+export const Span = styled.span`
+  color: red;
+  font-size: 10px;
+  position: relative;
+  bottom: 5px;
 `

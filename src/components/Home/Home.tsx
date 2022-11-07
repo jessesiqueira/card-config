@@ -22,7 +22,6 @@ export default function Home() {
 
   function onSubmit(userData: InputProps) {
     setConfirm(true)
-    console.log(setConfirm)
   }
   return (
     <HomeComponent>
