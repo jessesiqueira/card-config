@@ -144,7 +144,7 @@ export function Form(props: IFormInputs) {
         {...register('name', { required: true, pattern: /^[A-Za-z]+$/i })}
         onChange={hadleChangerName}
         type="text"
-        placeholder="Yor Name..."
+        placeholder="Your Name..."
         maxLength={16}
       />
       {errors.name != null && <Span>{errors.name.message}</Span>}
