@@ -12,6 +12,21 @@ export const InputContainer = styled.form`
     margin-left: 400px;
     margin-top: 200px;
   }
+
+  @media screen and (max-width: 898px) {
+    width: 300px;
+    position: relative;
+    margin-top: 200px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  @media screen and (max-width: 660px) {
+    width: 300px;
+    position: relative;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 200px;
+  }
 `
 export const InputName = styled.input`
   border: 1px solid #d9d9d9;
@@ -22,11 +37,13 @@ export const InputName = styled.input`
 export const Label = styled.label`
   font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
+  color: #23092f;
 `
 export const LabelCvc = styled.label`
   margin-left: 62px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 12px;
+  color: #23092f;
 `
 export const InputCvc = styled.input`
   width: 138px;

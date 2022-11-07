@@ -16,6 +16,13 @@ export const ContainerConfirm = styled.div`
     margin-top: 120px;
     margin-left: 390px;
   }
+  @media screen and (max-width: 898px) {
+    width: 300px;
+    position: relative;
+    margin-top: 200px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
 `
 export const Title = styled.h1`
   color: #23092f;
